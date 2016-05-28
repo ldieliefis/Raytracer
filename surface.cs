@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 // using System.Runtime.InteropServices;
@@ -8,6 +8,8 @@ using OpenTK.Graphics.OpenGL;
  
 namespace template
 {
+    // TODO functionaliteit toevoegen waarmee je op twee schermen kunt tekenen
+
 	public class Sprite
 	{
 		Surface bitmap;

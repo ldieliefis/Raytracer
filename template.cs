@@ -6,12 +6,12 @@ using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 
-namespace Template
+namespace template
 {
 	public class OpenTKApp : GameWindow
 	{
 		static int screenID;
-		static Game game;
+		static raytracer game; // gebruik de klasse raytracer ipv game
 		static bool terminated = false;
 		protected override void OnLoad( EventArgs e )
 		{
@@ -21,7 +21,7 @@ namespace Template
 			GL.Disable( EnableCap.DepthTest );
 			GL.Hint( HintTarget.PerspectiveCorrectionHint, HintMode.Nicest );
 			ClientSize = new Size( 640, 400 );
-			game = new Game();
+			game = new raytracer();
 			game.screen = new Surface( Width, Height );
 			Sprite.target = game.screen;
 			screenID = game.screen.GenTexture();

@@ -8,6 +8,12 @@ namespace template
 {
     class sphere : primitive
     {
-        int position, radius;
+        int radius;
+        int[] position;
+
+        public sphere(int radius, int[] position)
+        {
+
+        }
     }
 }
