@@ -20,7 +20,7 @@ namespace template
 			GL.Enable( EnableCap.Texture2D );
 			GL.Disable( EnableCap.DepthTest );
 			GL.Hint( HintTarget.PerspectiveCorrectionHint, HintMode.Nicest );
-			ClientSize = new Size( 640, 400 );
+			ClientSize = new Size( 1024, 512 );
 			game = new raytracer();
 			game.screen = new Surface( Width, Height );
 			Sprite.target = game.screen;
@@ -36,10 +36,16 @@ namespace template
 		protected override void OnResize( EventArgs e )
 		{
 			// called upon window resize
-			GL.Viewport(0, 0, Width, Height);
+            //viewport links
+			GL.Viewport(0, 0, Width/2, Height);
 			GL.MatrixMode( MatrixMode.Projection );
 			GL.LoadIdentity();
 			GL.Ortho( -1.0, 1.0, -1.0, 1.0, 0.0, 4.0 );
+            //viewport rechts
+            GL.Viewport(Width/2, 0, Width/2, Height);
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+            GL.Ortho(-1.0, 1.0, -1.0, 1.0, 0.0, 4.0);
 		}
 		protected override void OnUpdateFrame( FrameEventArgs e )
 		{
@@ -65,8 +71,11 @@ namespace template
 						 );
 			// clear window contents
 			GL.Clear( ClearBufferMask.ColorBufferBit );
-			// setup camera
-			GL.MatrixMode( MatrixMode.Modelview );
+
+            //laad in linkse viewport
+            GL.Viewport(0, 0, Width / 2, Height);
+            // setup camera
+            GL.MatrixMode( MatrixMode.Modelview );
 			GL.LoadIdentity();
 			GL.MatrixMode( MatrixMode.Projection );
 			GL.LoadIdentity();
@@ -76,7 +85,12 @@ namespace template
 			GL.TexCoord2( 1.0f, 1.0f ); GL.Vertex2(  1.0f, -1.0f );
 			GL.TexCoord2( 1.0f, 0.0f ); GL.Vertex2(  1.0f,  1.0f );
 			GL.TexCoord2( 0.0f, 0.0f ); GL.Vertex2( -1.0f,  1.0f );
-			GL.End();
+            //laad in rechtse viewport
+          //  GL.Viewport(Width/2, 0, Width / 2, Height);
+          // nog niet duidelijk waar het renderen van de rechter helft moet
+          
+            GL.End();
+
 			// tell OpenTK we're done rendering
 			SwapBuffers();
 		}
