@@ -8,7 +8,7 @@ namespace template
 {
     class scene
     {
-        List<primitive> primitives;
+        List<primitive> primitives = new List<primitive>();
         List<light> lightsources;
         /*
         intersection Intersect()
@@ -17,7 +17,13 @@ namespace template
             return intersection;
         }
         */
-        public void addsphere(sphere bol)
+        public scene() { }
+
+        public List<primitive> getprimitives()
+        {
+            return primitives;
+        }
+        public void addprimitive(primitive bol)
         {
             // voegt een sphere toe aan de lijst van primitives
             primitives.Add(bol);

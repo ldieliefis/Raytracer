@@ -10,5 +10,6 @@ namespace template
     class primitive
     {
         float color;
+        public primitive() { }
     }
 }
