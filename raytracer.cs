@@ -33,6 +33,7 @@ namespace template
             // voeg bol toe aan list
             scene.addprimitive(eerstebol);
             scene.addprimitive(vierkant);
+            render = new Surface(512, 512);
             debug = new Surface(512,512);
         }
         // tick: renders one frame
