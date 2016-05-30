@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace template
 {
-    class sphere : primitive
+    class square : primitive
     {
-        public int radius;
+        public int width;
+        public int height;
         public int[] position;
 
-        public sphere() { }
-
-        public sphere(int rad, int[] pos)
+        public square(int w, int h, int[] pos)
         {
-            radius = rad;
-            position = pos; 
+            width = w;
+            height = h;
+            position = pos;
         }
     }
 }

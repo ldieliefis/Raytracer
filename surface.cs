@@ -138,14 +138,13 @@ namespace template
             {
                 x = (int)(xc + radius * Math.Cos(hoek));
                 y = (int)(yc + radius * Math.Sin(hoek));
-                location = x + y / 2 * width + height / 2 * width + width / 2;
+                location = x + y / 2 * width + height / 2 * width + width / 2 + 512 * 512;
                 pixels[location] = color;
             }
         }
 
         public void Sphere(int xc, int yc, int zc, int radius, int color)
         {
-            //𝑥 = 𝑟cos𝜙sin𝜃, 𝑦 = 𝑟sin𝜙sin𝜃, 𝑧 = 𝑟cos𝜃
             int x, y, z, location;
             for (int hoek = 0; hoek < 360; hoek++)
             {

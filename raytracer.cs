@@ -22,9 +22,11 @@ namespace template
         public void Init()
         {
             // maak een bol
-            primitive eerstebol = new sphere(250, new int[] { 0, 0, 0 });
+            primitive eerstebol = new sphere(10, new int[] { 0, 0, 0 });
+            primitive vierkant = new square(100, 100, new int[] { 0, 0, 0 });
             // voeg bol toe aan list
             scene.addprimitive(eerstebol);
+            scene.addprimitive(vierkant);
         }
         // tick: renders one frame
         public void Tick()
@@ -33,18 +35,22 @@ namespace template
             screen.Print( "Dit is raytracer, niet game! Kusje, Laura", 2, 2, 0xffffff );
 
             List<primitive> primitieven = scene.getprimitives();
-            if (primitieven[0].GetType().Equals(typeof(sphere)))
+            
+            if (primitieven[1].GetType().Equals(typeof(square)))
             {
-                sphere eerstebol = (sphere)primitieven[0];
-                screen.Circle(eerstebol.position[0], eerstebol.position[2], eerstebol.radius, CreateColor(255, 255, 255));
+                square vierkant = (square)primitieven[1];
+                screen.DrawSquare(vierkant.position,vierkant.width,vierkant.height);
+                //call square function out of surface
             }
             else {
                 primitive eersteding = primitieven[0];
             }
+
+            
+            
             // TODO teken hier de spheres: links in 3d en rechts in 2d bovenaanzicht
         }
-        int CreateColor(int red, int green, int blue)
-        { return (red << 16) + (green << 8) + blue; }
+        
     }
 
 }
