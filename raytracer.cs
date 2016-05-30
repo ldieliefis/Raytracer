@@ -27,14 +27,14 @@ namespace template
 
         public void Init()
         {
-            // maak een bol
+            // maak de spheres
             primitive eerstebol = new sphere(100, new int[] { 0, 0, -100 });
             primitive tweedebol = new sphere(100, new int[] { 200, 0, -100 });
             primitive derdebol = new sphere(100, new int[] { -200, 0, -100 });
             primitive vierdebol = new sphere(75, new int[] { 0, 0, 200 });
             primitive vijfdebol = new sphere(50, new int[] { -100, 0, 125 });
             //primitive vierkant = new square(100, 100, new int[] { 0, 0, 0 });
-            // voeg bol toe aan list
+            // voeg spheres toe aan list
             scene.addprimitive(eerstebol);
             scene.addprimitive(tweedebol);
             scene.addprimitive(derdebol);
@@ -53,7 +53,7 @@ namespace template
             List<primitive> primitieven = scene.getprimitives();
             int teller = 0;
             int color;
-            
+
             foreach(primitive primitieve in primitieven)
             {
                 if (teller > 3)
