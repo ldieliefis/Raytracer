@@ -22,7 +22,7 @@ namespace template
         public void Init()
         {
             // maak een bol
-            primitive eerstebol = new sphere(10, new int[] { 0, 0, 0 });
+            primitive eerstebol = new sphere(250, new int[] { 0, 0, 0 });
             // voeg bol toe aan list
             scene.addprimitive(eerstebol);
         }
@@ -35,21 +35,12 @@ namespace template
             List<primitive> primitieven = scene.getprimitives();
             if (primitieven[0].GetType().Equals(typeof(sphere)))
             {
-                sphere eerstebol = new sphere();
-                eerstebol = (sphere)primitieven[0];
-                for (int x = eerstebol.position[0] - eerstebol.radius; x < eerstebol.position[0] + eerstebol.radius; x++)
-                {
-                        int y = (int)Math.Sqrt( - Math.Pow(x,2) + Math.Pow(eerstebol.radius, 2)) + eerstebol.position[2];
-                        int location = x + y + screen.height/2 * screen.width;    
-                    screen.pixels[location] = CreateColor(255, 255, 255);
-                }
+                sphere eerstebol = (sphere)primitieven[0];
+                screen.Circle(eerstebol.position[0], eerstebol.position[2], eerstebol.radius, CreateColor(255, 255, 255));
             }
             else {
                 primitive eersteding = primitieven[0];
             }
-
-            
-            
             // TODO teken hier de spheres: links in 3d en rechts in 2d bovenaanzicht
         }
         int CreateColor(int red, int green, int blue)

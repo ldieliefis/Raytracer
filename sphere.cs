@@ -11,7 +11,7 @@ namespace template
         public int radius;
         public int[] position;
 
-        public sphere() { }
+        //public sphere() { }
 
         public sphere(int rad, int[] pos)
         {
