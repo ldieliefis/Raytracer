@@ -28,7 +28,7 @@ namespace template
         public void Init()
         {
             // maak een bol
-            primitive eerstebol = new sphere(10, new int[] { 0, 0, 0 });
+            primitive eerstebol = new sphere(100, new int[] { 0, 0, 0 });
             primitive vierkant = new square(100, 100, new int[] { 0, 0, 0 });
             // voeg bol toe aan list
             scene.addprimitive(eerstebol);
@@ -44,12 +44,12 @@ namespace template
 
             List<primitive> primitieven = scene.getprimitives();
             
-            if (primitieven[1].GetType().Equals(typeof(square)))
+            if (primitieven[0].GetType().Equals(typeof(sphere)))
             {
-                square vierkant = (square)primitieven[1];
-                debug.Square(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
-                //sphere eerstebol = (sphere)primitieven[0];
-                //screen.Circle(eerstebol.position[0], eerstebol.position[2], eerstebol.radius, CreateColor(255, 255, 255));
+                //square vierkant = (square)primitieven[1];
+                //debug.Square(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
+                sphere eerstebol = (sphere)primitieven[0];
+                debug.Circle(eerstebol.position[0], eerstebol.position[2], eerstebol.radius, CreateColor(255, 255, 255));
                 //call square function out of surface
             }
             else {
