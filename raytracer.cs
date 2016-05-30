@@ -11,6 +11,11 @@ namespace template
         scene scene = new scene();
         camera camera;
         public Surface screen;
+        public Surface debug;
+        public Surface render;
+
+        int CreateColor(int red, int green, int blue)
+        { return (red << 16) + (green << 8) + blue; }
 
         void Render()
         {
@@ -32,14 +37,16 @@ namespace template
         public void Tick()
         {
             screen.Clear(0);
-            screen.Print( "Dit is raytracer, niet game! Kusje, Laura", 2, 2, 0xffffff );
+            render.Print( "Dit is raytracer, niet game! Kusje, Laura", 2, 2, 0xffffff );
 
             List<primitive> primitieven = scene.getprimitives();
             
             if (primitieven[1].GetType().Equals(typeof(square)))
             {
                 square vierkant = (square)primitieven[1];
-                screen.DrawSquare(vierkant.position,vierkant.width,vierkant.height);
+                debug.Square(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
+                //sphere eerstebol = (sphere)primitieven[0];
+                //screen.Circle(eerstebol.position[0], eerstebol.position[2], eerstebol.radius, CreateColor(255, 255, 255));
                 //call square function out of surface
             }
             else {
@@ -50,7 +57,9 @@ namespace template
             
             // TODO teken hier de spheres: links in 3d en rechts in 2d bovenaanzicht
         }
-        
+
+      
+
     }
 
 }

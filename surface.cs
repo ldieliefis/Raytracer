@@ -143,6 +143,28 @@ namespace template
             }
         }
 
+        public void Square(int[] position, int sqwidth, int sqheight, int color)
+        {
+            //square vierkant = new square();
+            int location;
+            //left x
+            int lx = position[0] - sqwidth / 2;
+            //right x
+            int rx = position[0] + sqwidth / 2;
+            //top y
+            int ty = position[1] - sqheight / 2;
+            //bottom y
+            int by = position[1] + sqheight / 2;
+            for (int x = lx; x < rx; x++)
+            {
+                for (int y = ty; y < by; y++)
+                {
+                    location = x + y / 2 * width + height / 2 * width + width / 2;
+                    pixels[location] = color;
+                }
+            }
+        }
+
         public void Sphere(int xc, int yc, int zc, int radius, int color)
         {
             int x, y, z, location;
