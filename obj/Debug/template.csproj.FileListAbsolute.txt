@@ -1,0 +1,2 @@
+C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\bin\Debug\template.exe.config
+C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\obj\Debug\template.csprojResolveAssemblyReference.cache
