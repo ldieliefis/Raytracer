@@ -8,6 +8,8 @@ using OpenTK.Graphics.OpenGL;
  
 namespace template
 {
+    // TODO functionaliteit toevoegen waarmee je op twee schermen kunt tekenen
+
 	public class Sprite
 	{
 		Surface bitmap;
@@ -130,36 +132,6 @@ namespace template
 				pixels[dest + x] = c;
 			}
 		}
-
-        public void Circle(int xc, int yc, int radius, int color)
-        {
-            int x, y, location;
-            for (int hoek = 0; hoek < 360; hoek++)
-            {
-                x = (int)(xc + radius * Math.Cos(hoek));
-                y = (int)(yc + radius * Math.Sin(hoek));
-                location = x + y / 2 * width + height / 2 * width + width / 2;
-                pixels[location] = color;
-            }
-        }
-
-        public void Sphere(int xc, int yc, int zc, int radius, int color)
-        {
-            //𝑥 = 𝑟cos𝜙sin𝜃, 𝑦 = 𝑟sin𝜙sin𝜃, 𝑧 = 𝑟cos𝜃
-            int x, y, z, location;
-            for (int hoek = 0; hoek < 360; hoek++)
-            {
-                for(int dieptehoek = 0; dieptehoek < 360; dieptehoek++)
-                {
-                    x = (int)(xc + radius * Math.Cos(dieptehoek)*Math.Sin(hoek));
-                    y = (int)(yc + radius * Math.Sin(dieptehoek)*Math.Sin(hoek));
-                    z = (int)(zc + radius * Math.Cos(hoek));
-                    location = x + y / 2 * width + z + height / 2 * width + width / 2;
-                    pixels[location] = color;
-                }
-            }
-        }
-
 		public void Line( int x1, int y1, int x2, int y2, int c )
 		{
 			if ((x1 < 0) || (y1 < 0) || (x2 < 0) || (y2 < 0) ||
@@ -191,6 +163,29 @@ namespace template
 				}
 			}
 		}
+        public void DrawSquare(int[] position, int sqwidth, int sqheight)
+        {
+            //square vierkant = new square();
+                int location;
+                //left x
+                int lx = position[0] - sqwidth / 2;
+                //right x
+                int rx = position[0] + sqwidth / 2;
+                //top y
+                int ty = position[1] - sqheight / 2;
+                //bottom y
+                int by = position[1] + sqheight / 2;
+                for (int x = lx; x < rx; x++)
+                {
+                    for (int y = ty; y < by; y++)
+                    {
+                        location = x + y / 2 * width + height / 2 * width + width / 2;
+                        pixels[location] = CreateColor(255, 255, 255);
+                    }
+                }
+        }
+        public int CreateColor(int red, int green, int blue)
+        { return (red << 16) + (green << 8) + blue; }
 		public void Plot( int x, int y, int c )
 		{
 			if ((x >= 0) && (y >= 0) && (x < width) && (y < height))
