@@ -78,15 +78,11 @@ namespace template
                 }
             if (primitieve.GetType().Equals(typeof(square)))
             {
-<<<<<<< HEAD
-                square vierkant = (square)primitieven[1];
-                render.Plane(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
-                
-=======
+
                 square vierkant = (square)primitieve;
-                debug.Square(vierkant.position,vierkant.width,vierkant.height, color);
+                debug.Plane(vierkant.position,vierkant.width,vierkant.height, color);
                     teller++;
->>>>>>> origin/master
+
             }
             else if (primitieve.GetType().Equals(typeof(sphere)))
                 {
