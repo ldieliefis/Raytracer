@@ -36,16 +36,12 @@ namespace template
 		protected override void OnResize( EventArgs e )
 		{
 			// called upon window resize
-            //viewport links
-			GL.Viewport(0, 0, Width/2, Height);
+      
+			GL.Viewport(0, 0, Width, Height);
 			GL.MatrixMode( MatrixMode.Projection );
 			GL.LoadIdentity();
 			GL.Ortho( -1.0, 1.0, -1.0, 1.0, 0.0, 4.0 );
-            //viewport rechts
-            GL.Viewport(Width/2, 0, Width/2, Height);
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-            GL.Ortho(-1.0, 1.0, -1.0, 1.0, 0.0, 4.0);
+       
 		}
 		protected override void OnUpdateFrame( FrameEventArgs e )
 		{
@@ -55,15 +51,20 @@ namespace template
 		}
 		protected override void OnRenderFrame( FrameEventArgs e )
 		{
-			// called once per frame; render
-			game.Tick();
+            
+            // called once per frame; render
+            game.Tick();
 			if (terminated) 
 			{
+
+
 				Exit();
 				return;
 			}
-			// convert Game.screen to OpenGL texture
-			GL.BindTexture( TextureTarget.Texture2D, screenID );
+            
+            
+            // convert Game.screen to OpenGL texture
+            GL.BindTexture( TextureTarget.Texture2D, screenID );
 			GL.TexImage2D( TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 
 						   game.screen.width, game.screen.height, 0, 
 						   OpenTK.Graphics.OpenGL.PixelFormat.Bgra, 
@@ -71,24 +72,22 @@ namespace template
 						 );
 			// clear window contents
 			GL.Clear( ClearBufferMask.ColorBufferBit );
-
-            //laad in linkse viewport
-            GL.Viewport(0, 0, Width / 2, Height);
+          
             // setup camera
             GL.MatrixMode( MatrixMode.Modelview );
 			GL.LoadIdentity();
 			GL.MatrixMode( MatrixMode.Projection );
 			GL.LoadIdentity();
-			// draw screen filling quad
-			GL.Begin( PrimitiveType.Quads );
+   
+            // draw screen filling quad
+            GL.Begin( PrimitiveType.Quads );
 			GL.TexCoord2( 0.0f, 1.0f ); GL.Vertex2( -1.0f, -1.0f );
 			GL.TexCoord2( 1.0f, 1.0f ); GL.Vertex2(  1.0f, -1.0f );
 			GL.TexCoord2( 1.0f, 0.0f ); GL.Vertex2(  1.0f,  1.0f );
 			GL.TexCoord2( 0.0f, 0.0f ); GL.Vertex2( -1.0f,  1.0f );
-            //laad in rechtse viewport
-          //  GL.Viewport(Width/2, 0, Width / 2, Height);
-          // nog niet duidelijk waar het renderen van de rechter helft moet
-          
+
+            
+
             GL.End();
 
 			// tell OpenTK we're done rendering
