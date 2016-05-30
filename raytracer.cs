@@ -55,7 +55,7 @@ namespace template
             if (primitieven[1].GetType().Equals(typeof(square)))
             {
                 square vierkant = (square)primitieven[1];
-                render.Square(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
+                render.Plane(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
                 
             }
 

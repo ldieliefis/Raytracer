@@ -143,7 +143,7 @@ namespace template
             }
         }
 
-        public void Square(int[] position, int sqwidth, int sqheight, int color)
+        public void Plane(int[] position, int sqwidth, int sqheight, int color)
         {
             //square vierkant = new square();
             int location;
@@ -164,6 +164,9 @@ namespace template
                 }
             }
         }
+
+       
+
 
         public void Sphere(int xc, int yc, int zc, int radius, int color)
         {
