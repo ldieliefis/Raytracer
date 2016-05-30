@@ -159,7 +159,7 @@ namespace template
             {
                 for (int y = ty; y < by; y++)
                 {
-                    location = x + y / 2 * width + height / 2 * width + width / 2;
+                    location = x + y * width + height / 2 * width + width / 2;
                     pixels[location] = color;
                 }
             }

@@ -46,12 +46,19 @@ namespace template
             
             if (primitieven[0].GetType().Equals(typeof(sphere)))
             {
-                //square vierkant = (square)primitieven[1];
-                //debug.Square(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
+               
                 sphere eerstebol = (sphere)primitieven[0];
                 debug.Circle(eerstebol.position[0], eerstebol.position[2], eerstebol.radius, CreateColor(255, 255, 255));
-                //call square function out of surface
+               
             }
+            
+            if (primitieven[1].GetType().Equals(typeof(square)))
+            {
+                square vierkant = (square)primitieven[1];
+                render.Square(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
+                
+            }
+
             else {
                 primitive eersteding = primitieven[0];
             }
