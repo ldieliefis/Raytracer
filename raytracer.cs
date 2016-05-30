@@ -14,6 +14,7 @@ namespace template
         public Surface debug;
         public Surface render;
 
+
         int CreateColor(int red, int green, int blue)
         { return (red << 16) + (green << 8) + blue; }
 
@@ -32,6 +33,7 @@ namespace template
             // voeg bol toe aan list
             scene.addprimitive(eerstebol);
             scene.addprimitive(vierkant);
+            debug = new Surface(512,512);
         }
         // tick: renders one frame
         public void Tick()
@@ -53,6 +55,8 @@ namespace template
                 primitive eersteding = primitieven[0];
             }
 
+            render.CopyTo(screen, 0, 0);
+            debug.CopyTo(screen, 512, 0);
             
             
             // TODO teken hier de spheres: links in 3d en rechts in 2d bovenaanzicht

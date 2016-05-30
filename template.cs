@@ -11,7 +11,7 @@ namespace template
 	public class OpenTKApp : GameWindow
 	{
 		static int screenID, debugID, renderID;
-		static raytracer game; // gebruik de klasse raytracer ipv game
+		static raytracer raytracer; // gebruik de klasse raytracer ipv game
 		static bool terminated = false;
 		protected override void OnLoad( EventArgs e )
 		{
@@ -21,22 +21,18 @@ namespace template
 			GL.Disable( EnableCap.DepthTest );
 			GL.Hint( HintTarget.PerspectiveCorrectionHint, HintMode.Nicest );
 			ClientSize = new Size( 1024, 512 );
-			game = new raytracer();
-			game.screen = new Surface( 1024 , 512 );
-            game.render = new Surface(512, 512);
-            game.debug = new Surface(512, 512);
-			Sprite.target = game.screen;
-            screenID = game.screen.GenTexture();
-            debugID = game.debug.GenTexture();
-            renderID = game.render.GenTexture();
-			game.Init();
+			raytracer = new raytracer();
+			raytracer.screen = new Surface( Width , Height );
+			Sprite.target = raytracer.screen;
+            screenID = raytracer.screen.GenTexture();
+          
+			raytracer.Init();
 		}
 		protected override void OnUnload( EventArgs e )
 		{
 			// called upon app close
 			GL.DeleteTextures( 1, ref screenID);
-            GL.DeleteTextures(1, ref debugID);
-            GL.DeleteTextures(1, ref renderID);
+          
 
 			Environment.Exit( 0 ); // bypass wait for key on CTRL-F5
 		}
@@ -60,7 +56,7 @@ namespace template
 		{
             
             // called once per frame; render
-            game.Tick();
+            raytracer.Tick();
 			if (terminated) 
 			{
 
@@ -71,23 +67,16 @@ namespace template
 
 
             // convert Game.screen to OpenGL texture
+        
 
-         
-              GL.BindTexture( TextureTarget.Texture2D, renderID );
-              GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba,
-                             game.render.width, game.render.height, 0,
+            GL.BindTexture( TextureTarget.Texture2D, screenID );
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba,
+                             raytracer.screen.width, raytracer.screen.height, 0,
                              OpenTK.Graphics.OpenGL.PixelFormat.Bgra,
-                             PixelType.UnsignedByte, game.render.pixels
-                           );
-              GL.BindTexture(TextureTarget.Texture2D, debugID);
-              GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba,
-                             game.debug.width, game.debug.height, 0,
-                             OpenTK.Graphics.OpenGL.PixelFormat.Bgra,
-                             PixelType.UnsignedByte, game.debug.pixels
-                           );
+                             PixelType.UnsignedByte, raytracer.screen.pixels);
+              
 
 
-           
             // clear window contents
             GL.Clear( ClearBufferMask.ColorBufferBit );
           
@@ -103,13 +92,6 @@ namespace template
 			GL.TexCoord2( 1.0f, 1.0f ); GL.Vertex2(  1.0f, -1.0f );
 			GL.TexCoord2( 1.0f, 0.0f ); GL.Vertex2(  1.0f,  1.0f );
 			GL.TexCoord2( 0.0f, 0.0f ); GL.Vertex2( -1.0f,  1.0f );
-
-
-            game.render.CopyTo(game.screen, 0, 0);
-            game.debug.CopyTo(game.screen, 512, 0);
-
-
-
 
             GL.End();
             
