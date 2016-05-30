@@ -28,11 +28,19 @@ namespace template
         public void Init()
         {
             // maak een bol
-            primitive eerstebol = new sphere(10, new int[] { 0, 0, 0 });
-            primitive vierkant = new square(100, 100, new int[] { 0, 0, 0 });
+            primitive eerstebol = new sphere(100, new int[] { 0, 0, -100 });
+            primitive tweedebol = new sphere(100, new int[] { 200, 0, -100 });
+            primitive derdebol = new sphere(100, new int[] { -200, 0, -100 });
+            primitive vierdebol = new sphere(75, new int[] { 0, 0, 200 });
+            primitive vijfdebol = new sphere(50, new int[] { -100, 0, 125 });
+            //primitive vierkant = new square(100, 100, new int[] { 0, 0, 0 });
             // voeg bol toe aan list
             scene.addprimitive(eerstebol);
-            scene.addprimitive(vierkant);
+            scene.addprimitive(tweedebol);
+            scene.addprimitive(derdebol);
+            scene.addprimitive(vierdebol);
+            scene.addprimitive(vijfdebol);
+            //scene.addprimitive(vierkant);
             render = new Surface(512, 512);
             debug = new Surface(512,512);
         }
@@ -43,19 +51,44 @@ namespace template
             render.Print( "Dit is raytracer, niet game! Kusje, Laura", 2, 2, 0xffffff );
 
             List<primitive> primitieven = scene.getprimitives();
+            int teller = 0;
+            int color;
             
-            if (primitieven[1].GetType().Equals(typeof(square)))
+            foreach(primitive primitieve in primitieven)
             {
-                square vierkant = (square)primitieven[1];
-                debug.Square(vierkant.position,vierkant.width,vierkant.height, CreateColor(255,255,255));
-                //sphere eerstebol = (sphere)primitieven[0];
-                //screen.Circle(eerstebol.position[0], eerstebol.position[2], eerstebol.radius, CreateColor(255, 255, 255));
-                //call square function out of surface
+                if (teller > 3)
+                    teller = 0;
+                switch(teller)
+                {
+                    case 0:
+                        color = CreateColor(255, 0, 0); // red
+                        break;
+                    case 1:
+                        color = CreateColor(0, 255, 0); // green
+                        break;
+                    case 2:
+                        color = CreateColor(0, 0, 255); // blue
+                        break;
+                    case 3:
+                        color = CreateColor(255, 0, 255); // pink??
+                        break;
+                    default:
+                        color = CreateColor(255, 255, 255); // white
+                        break;                        
+                }
+            if (primitieve.GetType().Equals(typeof(square)))
+            {
+                square vierkant = (square)primitieve;
+                debug.Square(vierkant.position,vierkant.width,vierkant.height, color);
+                    teller++;
             }
-            else {
-                primitive eersteding = primitieven[0];
+            else if (primitieve.GetType().Equals(typeof(sphere)))
+                {
+                    sphere bol = (sphere)primitieve;
+                    debug.Circle(bol.position[0], bol.position[2], bol.radius, color);
+                    teller++;
+                }
             }
-
             render.CopyTo(screen, 0, 0);
             debug.CopyTo(screen, 512, 0);
             

@@ -138,7 +138,7 @@ namespace template
             {
                 x = (int)(xc + radius * Math.Cos(hoek));
                 y = (int)(yc + radius * Math.Sin(hoek));
-                location = x + y / 2 * width + height / 2 * width + width / 2 + 512 * 512;
+                location = x / 2 + y / 2 * width + height / 2 * width + width / 2;
                 pixels[location] = color;
             }
         }
