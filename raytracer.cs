@@ -95,6 +95,7 @@ namespace template
                     int[] punt1 = nieuwelocatie(middenscreenplane, lengtehalfscherm, nieuwerichting(camera.direction, 1));
                     int[] punt2 = nieuwelocatie(middenscreenplane, lengtehalfscherm, nieuwerichting(camera.direction, 0));
 
+                    debug.Line(punt1[0], punt1[2], punt2[0], punt2[2], CreateColor(0, 255, 0));
 
                     // op basis van de lengte van het scherm en de normaal (of de kijkrichting) bepaal je
                     // de uiterste punten van de plane, zowel x, y als z
