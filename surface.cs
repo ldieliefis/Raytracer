@@ -199,10 +199,10 @@ namespace template
 		public void Line( float xc1, float yc1, float xc2, float yc2, int c )
 		{
             int x1, x2, y1, y2;
-            x1 = (int)(xc1 / 5 * width) + width * 5 / 2;
-            y1 = (int)(yc1 * -1 / 5 * height) + height / 2 * width;
-            x2 = (int)(xc2 / 5 * width) + width / 2;
-            y2 = (int)(yc2 * -1 / 5 * height) + height / 2 * width;
+            x1 = (int)(xc1 / 5 * width);
+            y1 = (int)(yc1 * -1 / 5 * height);
+            x2 = (int)(xc2 / 5 * width);
+            y2 = (int)(yc2 * -1 / 5 * height);
 
             if ((x1 < 0) || (y1 < 0) || (x2 < 0) || (y2 < 0) ||
 				(x1 >= width) || (x2 >= width) || (y1 >= height) || (y2 >= height)) return;
