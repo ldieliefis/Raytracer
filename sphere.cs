@@ -8,12 +8,12 @@ namespace template
 {
     class sphere : primitive
     {
-        public int radius;
-        public int[] position;
+        public float radius;
+        public float[] position;
 
         public sphere() { }
 
-        public sphere(int rad, int[] pos)
+        public sphere(float rad, float[] pos)
         {
             radius = rad;
             position = pos; 

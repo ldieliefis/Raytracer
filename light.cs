@@ -8,10 +8,10 @@ namespace template
 {
     class light
     {
-        public int[] location;
+        public float[] location;
         public float[] intensity;
 
-        public light(int[] l, float[] i)
+        public light(float[] l, float[] i)
         {
             location = l;
             intensity = i;

@@ -28,14 +28,14 @@ namespace template
         public void Init()
         {
             // maak de spheres
-            primitive eerstebol = new sphere(100, new int[] { 0, 0, -100 });
-            primitive tweedebol = new sphere(100, new int[] { 200, 0, -100 });
-            primitive derdebol = new sphere(100, new int[] { -200, 0, -100 });
-            primitive vierdebol = new sphere(75, new int[] { 0, 0, 200 });
-            primitive vijfdebol = new sphere(50, new int[] { -100, 0, 125 });
-            plane cameraplane = new plane(new int[] { 0,0,-1}, 6);
-            camera = new camera(new int[] { 0, 0, 200 }, cameraplane.normal, cameraplane.distancetoorigin, cameraplane.normal);
-            light lightsource = new light(new int[] { 0, 0, 0 }, new float[] { 1f, 1f, 1f });
+            primitive eerstebol = new sphere(1, new float[] { 0, 0, -1 });
+            primitive tweedebol = new sphere(1, new float[] { 2, 0, -1 });
+            primitive derdebol = new sphere(1, new float[] { -2, 0, -1 });
+            primitive vierdebol = new sphere(0.75f, new float[] { 0, 0, 0 });
+            primitive vijfdebol = new sphere(0.50f, new float[] { -1, 0, 1.25f });
+            plane cameraplane = new plane(new float[] { 0,0,-1}, 3);
+            camera = new camera(new float[] { 0, 0, 2 }, cameraplane.normal, cameraplane.distancetoorigin, cameraplane.normal);
+            light lightsource = new light(new float[] { 0, 0, 0 }, new float[] { 1f, 1f, 1f });
             // voeg spheres toe aan list
             scene.addprimitive(eerstebol);
             scene.addprimitive(tweedebol);
@@ -54,7 +54,7 @@ namespace template
             render.Print( "Dit is raytracer, niet game! Kusje, Laura", 2, 2, 0xffffff );
 
             // geef camera weer op scherm
-            debug.Box(camera.location[0], camera.location[2], camera.location[0] + 5, camera.location[2] + 5    , CreateColor(255,255,255));
+            //debug.Box(camera.location[0], camera.location[2], camera.location[0] + 0.1f, camera.location[2] + 0.1f, CreateColor(255,255,255));
 
             List<primitive> primitieven = scene.getprimitives();
             int color;
@@ -89,11 +89,11 @@ namespace template
                     // vanuit positie camera en richting camera en FOV (hoek) en afstand camera tot scherm
                     // (FOV is nu 90)
                     // bepaal je de lengte van het scherm.
-                    int[] middenscreenplane = new int[3];
+                    float[] middenscreenplane = new float[3];
                     middenscreenplane = nieuwelocatie(camera.location, screenplane.distancetoorigin, camera.direction);
-                    int lengtehalfscherm = (int)(Math.Tan(45) * screenplane.distancetoorigin);
-                    int[] punt1 = nieuwelocatie(middenscreenplane, lengtehalfscherm, nieuwerichting(camera.direction, 1));
-                    int[] punt2 = nieuwelocatie(middenscreenplane, lengtehalfscherm, nieuwerichting(camera.direction, 0));
+                    float lengtehalfscherm = (float)(Math.Tan(45) * screenplane.distancetoorigin);
+                    float[] punt1 = nieuwelocatie(middenscreenplane, lengtehalfscherm, nieuwerichting(camera.direction, 1));
+                    float[] punt2 = nieuwelocatie(middenscreenplane, lengtehalfscherm, nieuwerichting(camera.direction, 0));
 
                     debug.Line(punt1[0], punt1[2], punt2[0], punt2[2], CreateColor(0, 255, 0));
 
@@ -118,9 +118,9 @@ namespace template
             // TODO teken hier de spheres: links in 3d en rechts in 2d bovenaanzicht
         }
 
-        private int[] nieuwelocatie(int[] oudelocatie, int afstand, int[] richting)
+        private float[] nieuwelocatie(float[] oudelocatie, float afstand, float[] richting)
         {
-            int[] nieuwelocatie = new int[3];
+            float[] nieuwelocatie = new float[3];
             nieuwelocatie[0] = oudelocatie[0] + richting[0] * afstand;
             nieuwelocatie[1] = oudelocatie[1] + richting[1] * afstand;
             nieuwelocatie[2] = oudelocatie[2] + richting[2] * afstand;
@@ -128,9 +128,9 @@ namespace template
             return nieuwelocatie;
         }
       
-        private int[] nieuwerichting(int[] ouderichting, int bovenonder) // boven = 1
+        private float[] nieuwerichting(float[] ouderichting, int bovenonder) // boven = 1
         {
-            int[] nieuwerichting = new int[3];
+            float[] nieuwerichting = new float[3];
             if(bovenonder == 0)
             {
                 nieuwerichting[0] = ouderichting[2] * -1;
