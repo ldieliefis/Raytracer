@@ -1,24 +1,6 @@
 C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\bin\Debug\template.exe.config
-C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\obj\Debug\template.csprojResolveAssemblyReference.cache
-<<<<<<< HEAD
 C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\bin\Debug\template.exe
 C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\bin\Debug\template.pdb
 C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\bin\Debug\OpenTK.dll
 C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\obj\Debug\template.exe
 C:\Users\Nicole\Documents\UU\informatica\jaar 1\4 Graphics\P2\git\Raytracer\obj\Debug\template.pdb
-=======
-C:\Users\Tijmen\Documents\UU\GR\Raytracer\bin\Debug\template.exe.config
-C:\Users\Tijmen\Documents\UU\GR\Raytracer\bin\Debug\template.exe
-C:\Users\Tijmen\Documents\UU\GR\Raytracer\bin\Debug\template.pdb
-C:\Users\Tijmen\Documents\UU\GR\Raytracer\bin\Debug\OpenTK.dll
-C:\Users\Tijmen\Documents\UU\GR\Raytracer\obj\Debug\template.csprojResolveAssemblyReference.cache
-C:\Users\Tijmen\Documents\UU\GR\Raytracer\obj\Debug\template.exe
-C:\Users\Tijmen\Documents\UU\GR\Raytracer\obj\Debug\template.pdb
->>>>>>> origin/master
-C:\Users\Laura\Documents\GitHub\Raytracer\bin\Debug\template.exe.config
-C:\Users\Laura\Documents\GitHub\Raytracer\obj\Debug\template.exe
-C:\Users\Laura\Documents\GitHub\Raytracer\obj\Debug\template.pdb
-C:\Users\Laura\Documents\GitHub\Raytracer\bin\Debug\template.exe
-C:\Users\Laura\Documents\GitHub\Raytracer\bin\Debug\template.pdb
-C:\Users\Laura\Documents\GitHub\Raytracer\bin\Debug\OpenTK.dll
-C:\Users\Laura\Documents\GitHub\Raytracer\obj\Debug\template.csprojResolveAssemblyReference.cache
