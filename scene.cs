@@ -9,7 +9,8 @@ namespace template
     class scene
     {
         List<primitive> primitives = new List<primitive>();
-        List<light> lightsources;
+        List<light> lightsources = new List<light>();
+
         /*
         intersection Intersect()
         {
@@ -22,6 +23,10 @@ namespace template
         public List<primitive> getprimitives()
         {
             return primitives;
+        }
+        public List<light> getlightsources()
+        {
+            return lightsources;
         }
         public void addprimitive(primitive bol)
         {

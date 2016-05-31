@@ -8,7 +8,13 @@ namespace template
 {
     class light
     {
-        int location;
-        float intensity;
+        public int[] location;
+        public float[] intensity;
+
+        public light(int[] l, float[] i)
+        {
+            location = l;
+            intensity = i;
+        }
     }
 }

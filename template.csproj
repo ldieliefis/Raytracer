@@ -75,7 +75,6 @@
     <Compile Include="light.cs" />
     <Compile Include="sphere.cs" />
     <Compile Include="primitive.cs" />
-    <Compile Include="square.cs" />
     <Compile Include="surface.cs" />
     <Compile Include="template.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

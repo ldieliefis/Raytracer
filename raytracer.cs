@@ -33,14 +33,17 @@ namespace template
             primitive derdebol = new sphere(100, new int[] { -200, 0, -100 });
             primitive vierdebol = new sphere(75, new int[] { 0, 0, 200 });
             primitive vijfdebol = new sphere(50, new int[] { -100, 0, 125 });
-            //primitive vierkant = new square(100, 100, new int[] { 0, 0, 0 });
+            plane cameraplane = new plane(new int[] { 0,0,1}, 1); // TODO deze goed aanroepen
+            camera = new camera(new int[] { 0, 0, 0 }, new int[] { 0, 0, -1 }, cameraplane.distancetoorigin, cameraplane.normal);
+            light lightsource = new light(new int[] { 0, 0, 0 }, new float[] { 1f, 1f, 1f });
             // voeg spheres toe aan list
             scene.addprimitive(eerstebol);
             scene.addprimitive(tweedebol);
             scene.addprimitive(derdebol);
             scene.addprimitive(vierdebol);
             scene.addprimitive(vijfdebol);
-            //scene.addprimitive(vierkant);
+            scene.addprimitive(cameraplane);
+            scene.addlightsource(lightsource);
             render = new Surface(512, 512);
             debug = new Surface(512,512);
         }
@@ -50,9 +53,12 @@ namespace template
             screen.Clear(0);
             render.Print( "Dit is raytracer, niet game! Kusje, Laura", 2, 2, 0xffffff );
 
+            // geef camera weer op scherm
+            debug.Box(camera.location[0], camera.location[2], camera.location[0] + 5, camera.location[2] + 5, CreateColor(255,255,255));
+
             List<primitive> primitieven = scene.getprimitives();
-            int teller = 0;
             int color;
+            int teller = 0;
 
             foreach(primitive primitieve in primitieven)
             {
@@ -76,11 +82,11 @@ namespace template
                         color = CreateColor(255, 255, 255); // white
                         break;                        
                 }
-            if (primitieve.GetType().Equals(typeof(square)))
+            if (primitieve.GetType().Equals(typeof(plane)))
             {
 
-                square vierkant = (square)primitieve;
-                debug.Plane(vierkant.position,vierkant.width,vierkant.height, color);
+                plane vierkant = (plane)primitieve;
+                //debug.Plane(vierkant.position,vierkant.width,vierkant.height, color);
                     teller++;
 
             }

@@ -8,8 +8,8 @@ namespace template
 {
     class plane : primitive
     {
-        int[] normal;
-        int distancetoorigin;
+        public int[] normal;
+        public int distancetoorigin;
 
         public plane(int[] n, int d)
         {
