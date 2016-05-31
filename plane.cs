@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace template
 {
-    class plane : primitive
+    public class plane : primitive
     {
         public int[] normal;
         public int distancetoorigin;

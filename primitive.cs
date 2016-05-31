@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace template
 {
-    class primitive
+    public class primitive
     {
         float color;
         public primitive() { }
